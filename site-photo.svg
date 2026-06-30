@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Duplex framing at a job site">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#a7cfd9"/>
+      <stop offset="0.62" stop-color="#dcebf0"/>
+      <stop offset="1" stop-color="#f3ead2"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#c68f53"/>
+      <stop offset="1" stop-color="#8f5730"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <path d="M0 712c142-42 303-64 483-48 238 20 403 86 717 42v194H0z" fill="#b5b29c"/>
+  <path d="M86 716h1028v72H86z" fill="#59685f" opacity=".42"/>
+  <g transform="translate(190 176)">
+    <path d="M60 330 430 76l380 254v58H60z" fill="#314047"/>
+    <path d="M127 320 430 112l312 208v30H127z" fill="#f1d6a2"/>
+    <path d="M103 350h682v284H103z" fill="url(#wood)"/>
+    <path d="M152 391h102v243H152zm167 0h102v243H319zm167 0h102v243H486zm167 0h82v243h-82z" fill="#efd3a3"/>
+    <path d="M95 350h700M125 436h640M125 522h640M125 608h640" stroke="#6f4328" stroke-width="12" opacity=".58"/>
+    <path d="M430 112v520M265 220v412M598 224v408" stroke="#704329" stroke-width="16" opacity=".55"/>
+    <path d="M60 330 430 76l380 254" fill="none" stroke="#223039" stroke-width="38" stroke-linejoin="round"/>
+    <path d="M84 330 430 96l356 234" fill="none" stroke="#f6c15b" stroke-width="12" stroke-linejoin="round"/>
+    <rect x="364" y="466" width="140" height="168" fill="#263139"/>
+    <rect x="542" y="424" width="126" height="98" fill="#dcebf0" stroke="#263139" stroke-width="10"/>
+    <path d="M605 424v98M542 473h126" stroke="#263139" stroke-width="8"/>
+  </g>
+  <g opacity=".8">
+    <path d="M925 265h54v440h-54z" fill="#d6a22a"/>
+    <path d="M834 700h240l-86-388h-68z" fill="#d6a22a"/>
+    <path d="M804 714h306v36H804z" fill="#223039"/>
+  </g>
+</svg>

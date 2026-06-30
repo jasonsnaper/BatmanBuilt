@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BatmanBuilt</title>
+    <meta name="theme-color" content="#223039" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="BatmanBuilt" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Projects">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">BB</div>
+          <div>
+            <h1>BatmanBuilt</h1>
+            <p>Build record</p>
+          </div>
+        </div>
+
+        <button class="primary-action" id="newProjectBtn" type="button">
+          <span aria-hidden="true">+</span>
+          New Project
+        </button>
+
+        <label class="search-wrap" for="projectSearch">
+          <span aria-hidden="true">?</span>
+          <input id="projectSearch" type="search" placeholder="Search projects" autocomplete="off" />
+        </label>
+
+        <nav class="project-list" id="projectList" aria-label="Project list"></nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="activeStatus">Active Project</p>
+            <h2 id="projectTitle">Loading</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-button" id="exportBtn" type="button" title="Export project summary">
+              <span aria-hidden="true">v</span>
+              Export
+            </button>
+            <button class="ghost-button danger" id="deleteProjectBtn" type="button" title="Delete project">
+              <span aria-hidden="true">x</span>
+              Delete
+            </button>
+          </div>
+        </header>
+
+        <section class="project-hero" aria-label="Project overview">
+          <div class="hero-photo" id="heroPhoto"></div>
+          <div class="hero-details">
+            <div class="field-grid">
+              <label>
+                Project name
+                <input id="nameInput" type="text" />
+              </label>
+              <label>
+                Address
+                <input id="addressInput" type="text" />
+              </label>
+              <label>
+                Phase
+                <select id="phaseInput">
+                  <option>Planning</option>
+                  <option>Site work</option>
+                  <option>Foundation</option>
+                  <option>Framing</option>
+                  <option>Rough-ins</option>
+                  <option>Inspections</option>
+                  <option>Finishes</option>
+                  <option>Punch list</option>
+                  <option>Complete</option>
+                </select>
+              </label>
+              <label>
+                Target date
+                <input id="targetInput" type="date" />
+              </label>
+            </div>
+            <label class="notes-field">
+              Notes
+              <textarea id="notesInput" rows="4"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="stats-row" aria-label="Project totals">
+          <article>
+            <strong id="photoCount">0</strong>
+            <span>Photos</span>
+          </article>
+          <article>
+            <strong id="docCount">0</strong>
+            <span>Documents</span>
+          </article>
+          <article>
+            <strong id="noteCount">0</strong>
+            <span>Daily notes</span>
+          </article>
+          <article>
+            <strong id="lastUpdated">Today</strong>
+            <span>Last updated</span>
+          </article>
+        </section>
+
+        <section class="tool-band" aria-label="Add project files">
+          <label class="upload-drop" for="fileInput">
+            <input id="fileInput" type="file" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt" />
+            <span class="upload-icon" aria-hidden="true">+</span>
+            <span>
+              <strong>Add photos or documents</strong>
+              <small>Images, PDFs, spreadsheets, Word docs, and text files</small>
+            </span>
+          </label>
+          <form class="quick-note" id="noteForm">
+            <input id="quickNoteInput" type="text" placeholder="Add a field note" autocomplete="off" />
+            <button class="primary-action compact" type="submit">Save Note</button>
+          </form>
+        </section>
+
+        <section class="content-tabs" aria-label="Project content">
+          <div class="tabs" role="tablist" aria-label="Views">
+            <button class="tab active" type="button" data-view="photos">Photos</button>
+            <button class="tab" type="button" data-view="documents">Documents</button>
+            <button class="tab" type="button" data-view="notes">Notes</button>
+            <button class="tab" type="button" data-view="concrete">Concrete Calculator</button>
+            <button class="tab" type="button" data-view="trim">Inside Trim Calculator</button>
+            <button class="tab" type="button" data-view="siding">Siding Calculator</button>
+            <button class="tab" type="button" data-view="flooring">Flooring Calculator</button>
+          </div>
+          <label class="library-search" for="librarySearch">
+            <span aria-hidden="true">?</span>
+            <input id="librarySearch" type="search" placeholder="Search this project" autocomplete="off" />
+          </label>
+        </section>
+
+        <section class="library-grid" id="libraryGrid" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <dialog id="projectDialog">
+      <form method="dialog" class="dialog-card" id="projectForm">
+        <header>
+          <h2>New Project</h2>
+          <button class="icon-button" value="cancel" type="submit" aria-label="Close">x</button>
+        </header>
+        <label>
+          Project name
+          <input id="dialogName" type="text" required placeholder="Duplex - Lot 12" />
+        </label>
+        <label>
+          Address
+          <input id="dialogAddress" type="text" placeholder="1240 W Example Ave" />
+        </label>
+        <menu>
+          <button class="ghost-button" value="cancel" type="submit">Cancel</button>
+          <button class="primary-action compact" value="default" type="submit">Create</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <template id="emptyStateTemplate">
+      <div class="empty-state">
+        <div aria-hidden="true">[]</div>
+        <h3>No items here yet</h3>
+        <p>This view will fill in as you add project records.</p>
+      </div>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
